@@ -13,9 +13,11 @@ use in python.
 ```python
 import iwlist_parser
 
+# Run scan on a particular interface (optional)
 INTERFACE="wlan1"
 cells = iwlist_parser.scan(INTERFACE)
 
+# Iterate the returned list and print some of the elements
 if len(cells) > 1:
     print(cell[0].essid,":",cell[0].address)
 
