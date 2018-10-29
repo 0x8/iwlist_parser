@@ -43,8 +43,8 @@ long as it is a string and a valid wireless device name.
 The cells themselves have several fields:
 
 | Field Name | Meaning |
-------------------------
-| name | The cell name assigned by iwlist (e.g. Cell 01, Cell 02, etc.). This isn't particularly useful other than keeping track |
+|------------|---------|
+| name | The cell name assigned by iwlist (e.g. Cell 01, Cell 02, etc.). This isn't particularly useful to end users |
 | channel | The channel on which the AP is operating |
 | address | The hardware (MAC) address of the AP |
 | frequency | The frequency at which the AP is operating (Should be around 2.4 GHz or 5.0 GHz) |
@@ -56,5 +56,5 @@ The cells themselves have several fields:
 | mode | The mode of the AP |
 | group_cipher | The type of group cipher being used (I assume) |
 | authentication_suites | Authentication Suite information from the AP |
-| extra | Unlabelebed items that I can't figure out the meaning/purpose of |
+| extra | Unlabeled items that I can't figure out the meaning/purpose of |
 
