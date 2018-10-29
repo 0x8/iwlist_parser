@@ -3,7 +3,6 @@
 
 from __future__ import print_function
 import re
-import click
 import subprocess
 
 class IWCELL:
@@ -144,11 +143,19 @@ def iwlist_output_parse(iwlist_output):
     return iwcell_list
 
 
-def scan():
+def scan(interface="wlan0", retry_limit=20):
     '''
     Callable when used as a library to run iwlist, parse output, and return
     cells.
     '''
+    # Get the raw listing, trying sudo method first using interface
+    # (Note: will automatically fail through to non-priv if needed)
+    iwlist_output = get_raw_iwlist_priv(interface, retry_limit)
+    
+    # Parse the result and return the cell list
+    cells = iwlist_output_parse(iwlist_output)
+
+    return cells
 
 
 def get_raw_iwlist_priv(interface='wlan0', retry_limit=20):
@@ -189,20 +196,3 @@ def get_raw_iwlist_nopriv(interface='wlan0', retry_limit=20):
 
         return iwlist_output
 
-
-click.command()
-click.option(
-    '-i','interface',
-    default='wlan0',
-    help='Specify which interface to scan. Do not use one' \
-       + 'that is already connected to a wireless network.',
-)
-click.option(
-    '-l', 'retry_limit',
-    default=20,
-) 
-def _main(interface, retry_limit):
-    '''
-    Handle the primary invocation from command line
-    '''
-    pass
