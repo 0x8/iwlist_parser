@@ -13,9 +13,11 @@ use in python.
 ```python
 import iwlist_parser
 
+# Run scan on a particular interface (optional)
 INTERFACE="wlan1"
 cells = iwlist_parser.scan(INTERFACE)
 
+# Iterate the returned list and print some of the elements
 if len(cells) > 1:
     print(cell[0].essid,":",cell[0].address)
 
@@ -33,16 +35,16 @@ interface3 = "ens33"
 
 etc.
 
-Note that "ens33" is probably a bad example as it is typically the default
-_ethernet_ interface (and this program requires a _wireless_ interface) it
+Note that although "ens33" is probably a bad example as it is typically the default
+_ethernet_ interface (and this program requires a _wireless_ interface), it
 simply illustrates the point that the name of the device doesn't matter so
 long as it is a string and a valid wireless device name.
 
 The cells themselves have several fields:
 
 | Field Name | Meaning |
-------------------------
-| name | The cell name assigned by iwlist (e.g. Cell 01, Cell 02, etc.). This isn't particularly useful other than keeping track |
+|------------|---------|
+| name | The cell name assigned by iwlist (e.g. Cell 01, Cell 02, etc.). This isn't particularly useful to end users |
 | channel | The channel on which the AP is operating |
 | address | The hardware (MAC) address of the AP |
 | frequency | The frequency at which the AP is operating (Should be around 2.4 GHz or 5.0 GHz) |
@@ -54,5 +56,5 @@ The cells themselves have several fields:
 | mode | The mode of the AP |
 | group_cipher | The type of group cipher being used (I assume) |
 | authentication_suites | Authentication Suite information from the AP |
-| extra | Unlabelebed items that I can't figure out the meaning/purpose of |
+| extra | Unlabeled items that I can't figure out the meaning/purpose of |
 
