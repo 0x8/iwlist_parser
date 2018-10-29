@@ -35,8 +35,8 @@ interface3 = "ens33"
 
 etc.
 
-Note that "ens33" is probably a bad example as it is typically the default
-_ethernet_ interface (and this program requires a _wireless_ interface) it
+Note that although "ens33" is probably a bad example as it is typically the default
+_ethernet_ interface (and this program requires a _wireless_ interface), it
 simply illustrates the point that the name of the device doesn't matter so
 long as it is a string and a valid wireless device name.
 
