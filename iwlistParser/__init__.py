@@ -3,6 +3,7 @@
 
 from __future__ import print_function
 import re
+import logging
 import subprocess
 
 class IWCELL:
@@ -173,8 +174,8 @@ def get_raw_iwlist_priv(interface='wlan0', retry_limit=20):
         iwlist_output = subprocess.check_output(['sudo','iwlist',interface, 'scan'])
         return iwlist_output
     except subprocess.CalledProcessError as e:
-        print("Incorrect password entered too many times.")
-        print("Attempting to run non-priveleged version with retry_limit:", retry_limit)
+        logging.error("Password incorrectly entered too many times or command is malformed")
+        logging.error("Attempting to run non-priveleged version with retry_limit:", retry_limit)
         iwlist_output = get_raw_iwlist_nopriv(interface, retry_limit)
 
 
