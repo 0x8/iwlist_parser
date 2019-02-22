@@ -172,7 +172,7 @@ def get_raw_iwlist_priv(interface='wlan0', retry_limit=20):
     try:
         iwlist_output = subprocess.check_output(['sudo','iwlist',interface, 'scan'])
         return iwlist_output
-    except CalledProcessError as e:
+    except subprocess.CalledProcessError as e:
         print("Incorrect password entered too many times.")
         print("Attempting to run non-priveleged version with retry_limit:", retry_limit)
         iwlist_output = get_raw_iwlist_nopriv(interface, retry_limit)
@@ -192,7 +192,7 @@ def get_raw_iwlist_nopriv(interface='wlan0', retry_limit=20):
         iwlist_output = subprocess.check_output(['iwlist', interface, 'scan'])
         if iwlist_output.find('No scan results') < 1:  # Failed to find substr
             # Got a good scan, break the loop
-            break.
+            break
 
         return iwlist_output
 
