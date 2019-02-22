@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name = "iwlist_parser",
+    name = "iwlistParser",
     version = "1.0.0",
 
     author = "Ian Guibas",
